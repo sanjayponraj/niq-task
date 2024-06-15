@@ -1,0 +1,24 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home .filterArea {
+    border: 1px solid black;
+    margin: 50px;
+}
+
+.chartArea {
+    width: 50%;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+}
+
+.runBtn {
+    margin: 0px 100px 20px 100px
+}
