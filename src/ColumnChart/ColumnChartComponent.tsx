@@ -1,68 +1,53 @@
-import { useEffect } from 'react';
-import Highcharts from 'highcharts';
-
+import { useEffect } from "react";
+import Highcharts from "highcharts";
 
 export interface ColumnData {
-    name: string; 
-    y: number;
+  name: string;
+  y: number;
 }
-export interface ColumnChartProps { 
-    data: ColumnData[];
-    yAxisName: string;
-    xAxisName: string;
-    title: string;
-   
+export interface ColumnChartProps {
+  data: ColumnData[];
+  yAxisName: string;
+  xAxisName: string;
+  title: string;
 }
 
 function ColumnChart(chartData: ColumnChartProps) {
-    useEffect(() => {
-        const chartOptions: Highcharts.Options = {
-            chart: {
-                type: 'column'
-            },
-            legend: {
-                enabled: false
-            },
-            title: {
-                text: chartData.title
-            },
-            xAxis: {
-                categories: chartData.data.map((item: ColumnData) => item.name),
-                title: {
-                    text: chartData.xAxisName
-                }
-            },
-            yAxis: {
-                title: {
-                    text: chartData.yAxisName
-                }
-            },
-            plotOptions: {
-                column: {
-                    stacking: 'normal',
-                    dataLabels: {
-                        enabled: true,
-                        color: 'white', 
-                        style: {
-                            textOutline: 'none' 
-                        }
-                    }
-                }
-            },
-            series: [
-                {
-                    type: 'column',
-                    name: chartData.yAxisName,
-                    data: chartData.data.map((item: ColumnData) => item.y),
-                    
-                }
-            ]
-        };
+  useEffect(() => {
+    const chartOptions: Highcharts.Options = {
+      chart: {
+        type: "column",
+      },
+      legend: {
+        enabled: false,
+      },
+      title: {
+        text: chartData.title,
+      },
+      xAxis: {
+        categories: chartData.data.map((item: ColumnData) => item.name),
+        title: {
+          text: chartData.xAxisName,
+        },
+      },
+      yAxis: {
+        title: {
+          text: chartData.yAxisName,
+        },
+      },
+      series: [
+        {
+          type: "column",
+          name: chartData.yAxisName,
+          data: chartData.data.map((item: ColumnData) => item.y),
+        },
+      ],
+    };
 
-        Highcharts.chart('chart-container', chartOptions);
-    }, [chartData.data]);
+    Highcharts.chart("chart-container", chartOptions);
+  }, [chartData.data]);
 
-    return <div id="chart-container" />;
-};
+  return <div id="chart-container" />;
+}
 
 export default ColumnChart;
